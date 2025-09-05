@@ -1,0 +1,24 @@
+package section_5_locators;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+
+public class IDLocators {
+	WebDriver driver;
+	@Test
+	public void execute() throws InterruptedException {
+		driver=new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
+		System.out.println("The obtained title is : " + driver.getTitle());
+		driver.findElement(By.id("inputUsername")).sendKeys("rahul");
+		Thread.sleep(4000);
+		driver.quit();
+	}
+}
