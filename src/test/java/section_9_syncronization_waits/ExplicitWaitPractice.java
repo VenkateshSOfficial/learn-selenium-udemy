@@ -1,4 +1,4 @@
-package section_7_automate_techniques;
+package section_9_syncronization_waits;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -6,14 +6,27 @@ import java.util.List;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class VeggiesCart {
+public class ExplicitWaitPractice {
 	WebDriver driver;
+	WebDriverWait wait;
 
 	String[] vegetables={"Tomato","Beans","Apple","Banana"};
 
+
+	public void explicitlyWait(String data,WebElement ele){
+		wait=new WebDriverWait(driver,Duration.ofSeconds(5));
+		switch (data){
+			case "visibilityOfElement":
+				System.out.println("executing explicit");
+				wait.until(ExpectedConditions.visibilityOf(ele));
+		}
+	}
 	@BeforeTest
 	public void launchBrowser(){
 		driver=new ChromeDriver();
@@ -34,7 +47,13 @@ public class VeggiesCart {
 			}
 		}
 		driver.findElement(By.cssSelector(".cart-icon img")).click();
-		Thread.sleep(2000);
+		driver.findElement(By.xpath("//button[contains(text(),'PROCEED TO CHECKOUT')]")).click();
+		driver.findElement(By.cssSelector(".promoCode")).sendKeys("rahulshettyacademy");
+		driver.findElement(By.cssSelector(".promoBtn")).click();
+		WebElement promoInfo = driver.findElement(By.cssSelector(".promoInfo"));
+		explicitlyWait("visibilityOfElement",promoInfo);
+		System.out.println(promoInfo.getText());
+		Assert.assertTrue(promoInfo.isDisplayed());
 	}
 	@AfterTest
 	public void tearDown(){
