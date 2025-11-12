@@ -1,4 +1,4 @@
-package section_10_practice_exercises;
+package section_11_practice_exercises;
 
 import java.time.Duration;
 
