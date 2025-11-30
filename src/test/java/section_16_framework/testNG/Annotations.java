@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 
 public class Annotations {
-	@Test
+	@Test(groups = {"smoke"})
 	public void execute(){
 		System.out.println("Hello world!!");
 	}

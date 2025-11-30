@@ -8,7 +8,7 @@ public class TestScope {
 	public void preRequisite(){
 		System.out.println("execute start");
 	}
-	@Test
+	@Test(groups = {"smoke"})
 	public void execute(){
 		System.out.println("Hello world!!!");
 	}

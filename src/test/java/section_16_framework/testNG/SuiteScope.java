@@ -8,7 +8,7 @@ public class SuiteScope {
 	public void pre(){
 		System.out.println("I am suite pre....!!");
 	}
-	@Test
+	@Test(enabled = false)
 	public void exect(){
 		System.out.println("heeeelllllo");
 	}

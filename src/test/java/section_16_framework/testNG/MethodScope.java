@@ -8,11 +8,11 @@ public class MethodScope {
 	public void before(){
 		System.out.println("i come before");
 	}
-	@Test
+	@Test(groups = {"smoke"})
 	public void t1(){
 		System.out.println("This is t1...");
 	}
-	@Test
+	@Test(dependsOnMethods = {"t1"})
 	public void t2(){
 		System.out.println("This is t2...");
 	}
