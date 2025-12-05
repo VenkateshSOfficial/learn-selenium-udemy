@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="tests">
+<suite name="All Test Suite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="section_16_framework.testNG.LearnListener"/>
+    </listeners>
     <parameter name="url" value="https://rahulshettyacademy.com/AutomationPractice/"/>
     <test verbose="2" preserve-order="true" name="chrome execution">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="section_16_framework.testNG.ParameterizedTestNG"/>
+<!--            <class name="section_16_framework.testNG.PracticeImplementListeners"/>-->
+<!--            <class name="section_16_framework.testNG.PracticeAgain"/>-->
         </classes>
     </test>
     <test verbose="2" preserve-order="true" name="firefox execution">
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="section_16_framework.testNG.ParameterizedTestNG"/>
+<!--            <class name="section_16_framework.testNG.PracticeAgain"/>-->
         </classes>
     </test>
 </suite>
